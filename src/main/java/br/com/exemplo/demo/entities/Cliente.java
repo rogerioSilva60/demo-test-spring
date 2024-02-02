@@ -7,13 +7,15 @@ public class Cliente {
   private Long id;
   private String nome;
   private LocalDate dataDeNascimento;
+  private Endereco endereco;
 
   public Cliente() {}
 
-  public Cliente(Long id, String nome, LocalDate dataDeNascimento) {
+  public Cliente(Long id, String nome, LocalDate dataDeNascimento, Endereco endereco) {
     this.id = id;
     this.nome = nome;
     this.dataDeNascimento = dataDeNascimento;
+    this.endereco = endereco;
   }
 
   public void setId(Long id) {
@@ -24,12 +26,28 @@ public class Cliente {
     return id;
   }
 
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
   public String getNome() {
     return nome;
   }
 
+  public void setDataDeNascimento(LocalDate dataDeNascimento) {
+    this.dataDeNascimento = dataDeNascimento;
+  }
+
   public LocalDate getDataDeNascimento() {
     return dataDeNascimento;
+  }
+
+  public Endereco getEndereco() {
+    return endereco;
+  }
+
+  public void setEndereco(Endereco endereco) {
+    this.endereco = endereco;
   }
 
   @Override
@@ -67,6 +85,7 @@ public class Cliente {
     private Long id;
     private String nome;
     private LocalDate dataDeNascimento;
+    private Endereco endereco;
 
     private Builder() {}
 
@@ -85,8 +104,13 @@ public class Cliente {
       return this;
     }
 
+    public Builder endereco(Endereco endereco) {
+      this.endereco = endereco;
+      return this;
+    }
+
     public Cliente build() {
-      return new Cliente(this.id, this.nome, this.dataDeNascimento);
+      return new Cliente(this.id, this.nome, this.dataDeNascimento, this.endereco);
     }
   }
 }
