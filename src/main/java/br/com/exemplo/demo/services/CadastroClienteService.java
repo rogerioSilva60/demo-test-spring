@@ -39,7 +39,7 @@ public class CadastroClienteService {
     this.cepClient = cepClient;
   }
 
-  public Cliente salvar(@NonNull ClienteWeb clienteWeb) throws RuntimeException {
+  public Cliente salvar(@NonNull ClienteWeb clienteWeb) {
 
     if(IDADE_PERMITIDA > getIdade(clienteWeb.getDataDeNascimento()))
       throw new RuntimeException("Obrigatório ser maior de 18 anos para se cadastrar nos sistema!");

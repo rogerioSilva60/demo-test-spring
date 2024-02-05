@@ -121,4 +121,76 @@ public class EnderecoWebXml{
     public void setSiafi(String siafi) {
         this.siafi = siafi;
     }
+
+    public static Builder builder() { return new Builder(); }
+
+    public static final class Builder {
+        private String cep;
+        private String logradouro;
+        private String complemento;
+        private String bairro;
+        private String localidade;
+        private String uf;
+        private String ibge;
+        private String gia;
+        private String ddd;
+        private String siafi;
+
+        private Builder() {}
+
+        public  Builder cep(String cep) {
+            this.cep = cep;
+            return this;
+        }
+
+        public Builder logradouro(String logradouro) {
+            this.logradouro = logradouro;
+            return this;
+        }
+
+        public Builder complemento(String complemento) {
+            this.complemento = complemento;
+            return this;
+        }
+
+        public Builder bairro(String bairro) {
+            this.bairro = bairro;
+            return this;
+        }
+
+        public Builder localidade(String localidade) {
+            this.localidade = localidade;
+            return this;
+        }
+
+        public Builder uf(String uf) {
+            this.uf = uf;
+            return this;
+        }
+
+        public Builder ibge(String ibge) {
+            this.ibge = ibge;
+            return this;
+        }
+
+        public Builder gia(String gia) {
+            this.gia = gia;
+            return this;
+        }
+
+        public Builder ddd(String ddd) {
+            this.ddd = ddd;
+            return this;
+        }
+
+        public Builder siafi(String siafi) {
+            this.siafi = siafi;
+            return this;
+        }
+
+        public EnderecoWebXml build() {
+            return new EnderecoWebXml(this.cep, this.logradouro, this.complemento, this.bairro,
+                this.localidade, this.uf, this.ibge, this.gia, this.ddd, this.siafi);
+        }
+    }
 }

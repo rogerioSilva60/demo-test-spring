@@ -106,7 +106,7 @@ public class Endereco {
 
   public static Builder builder() { return new Builder(); }
 
-  public final static class Builder {
+  public static final class Builder {
     private String cep;
     private String logradouro;
     private String complemento;

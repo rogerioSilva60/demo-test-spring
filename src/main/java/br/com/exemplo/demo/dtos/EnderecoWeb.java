@@ -1,5 +1,6 @@
 package br.com.exemplo.demo.dtos;
 
+
 public class EnderecoWeb{
   private String cep;
   private String logradouro;
@@ -68,5 +69,51 @@ public class EnderecoWeb{
     this.uf = uf;
   }
 
+  public static EnderecoWeb.Builder builder() { return new EnderecoWeb.Builder(); }
 
+  public static final class Builder {
+    private String cep;
+    private String logradouro;
+    private String complemento;
+    private String bairro;
+    private String localidade;
+    private String uf;
+
+    private Builder() {}
+
+    public EnderecoWeb.Builder cep(String cep) {
+      this.cep = cep;
+      return this;
+    }
+
+    public EnderecoWeb.Builder logradouro(String logradouro) {
+      this.logradouro = logradouro;
+      return this;
+    }
+
+    public EnderecoWeb.Builder complemento(String complemento) {
+      this.complemento = complemento;
+      return this;
+    }
+
+    public EnderecoWeb.Builder bairro(String bairro) {
+      this.bairro = bairro;
+      return this;
+    }
+
+    public EnderecoWeb.Builder localidade(String localidade) {
+      this.localidade = localidade;
+      return this;
+    }
+
+    public EnderecoWeb.Builder uf(String uf) {
+      this.uf = uf;
+      return this;
+    }
+
+    public EnderecoWeb build() {
+      return new EnderecoWeb(this.cep, this.logradouro, this.complemento, this.bairro,
+          this.localidade, this.uf);
+    }
+  }
 }
