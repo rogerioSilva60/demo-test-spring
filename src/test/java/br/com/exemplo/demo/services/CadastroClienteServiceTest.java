@@ -16,7 +16,6 @@ import br.com.exemplo.demo.dtos.EnderecoWeb;
 import br.com.exemplo.demo.dtos.EnderecoWebXml;
 import br.com.exemplo.demo.entities.Cliente;
 import br.com.exemplo.demo.mapper.ClienteMapper;
-import br.com.exemplo.demo.mother.ClienteMother;
 import br.com.exemplo.demo.mother.ClienteWebMother;
 import br.com.exemplo.demo.mother.EnderecoWebMother;
 import br.com.exemplo.demo.repositories.ClienteRepository;
@@ -89,13 +88,13 @@ class CadastroClienteServiceTest {
     }
 
     @Test
-    void DadoClienteMaiorDeIdadeQuandoSalvarEntaoDeveVerificarEnderecoViaSOAP() {
+    void DadoClienteMaiorDeIdadeQuandoSalvarEntaoDeveVerificarGetEnderecoViaSOAP() {
       cadastroClienteService.salvar(clienteWeb);
       verify(cepSOAPClient, atLeast(1)).getEndereco(clienteWeb.getCep());
     }
 
     @Test
-    void DadoClienteMaiorDeIdadeQuandoSalvarEntaoDeveVerificarEnderecoViaJSON() {
+    void DadoClienteMaiorDeIdadeQuandoSalvarEntaoDeveVerificarGetEnderecoViaJSON() {
       cadastroClienteService.salvar(clienteWeb);
       verify(cepClient, atLeast(1)).getEndereco(clienteWeb.getCep());
     }
