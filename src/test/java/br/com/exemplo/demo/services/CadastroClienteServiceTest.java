@@ -65,7 +65,7 @@ class CadastroClienteServiceTest {
     void setUp(){
       cadastroClienteService = new CadastroClienteService(clienteRepository, modelMapper,
           clienteMapper, cepSOAPClient, cepClient);
-      when(clienteRepository.salvar(any(Cliente.class)))
+      when(clienteRepository.save(any(Cliente.class)))
           .thenAnswer(invocacao -> {
             Cliente clientePassado = invocacao.getArgument(0, Cliente.class);
             clientePassado.setId(1L);
@@ -84,7 +84,7 @@ class CadastroClienteServiceTest {
     @Test
     void DadoClienteMaiorDeIdadeQuandoSalvarEntaoDeveVerificarMetodoDeArmazenamento() {
       cadastroClienteService.salvar(clienteWeb);
-      verify(clienteRepository, times(1)).salvar(any(Cliente.class));
+      verify(clienteRepository, times(1)).save(any(Cliente.class));
     }
 
     @Test

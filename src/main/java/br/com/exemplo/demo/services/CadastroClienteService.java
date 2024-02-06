@@ -17,6 +17,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CadastroClienteService {
@@ -39,6 +40,7 @@ public class CadastroClienteService {
     this.cepClient = cepClient;
   }
 
+  @Transactional
   public Cliente salvar(@NonNull ClienteWeb clienteWeb) {
 
     if(IDADE_PERMITIDA > getIdade(clienteWeb.getDataDeNascimento()))
@@ -54,7 +56,7 @@ public class CadastroClienteService {
     Cliente clienteViaMapStruct = clienteMapper.toCliente(clienteWeb);
     cliente.setEndereco(endereco);
 
-    return clienteRepository.salvar(cliente);
+    return clienteRepository.save(cliente);
   }
 
   private int getIdade(LocalDate dataDeNascimento) {

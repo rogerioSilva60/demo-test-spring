@@ -1,13 +1,9 @@
 package br.com.exemplo.demo.repositories;
 
 import br.com.exemplo.demo.entities.Cliente;
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Component
-public class ClienteRepository {
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
-  public Cliente salvar(Cliente cliente) {
-    return cliente;
-  }
 
 }

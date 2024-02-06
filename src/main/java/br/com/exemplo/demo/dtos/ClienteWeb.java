@@ -1,11 +1,16 @@
 package br.com.exemplo.demo.dtos;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class ClienteWeb{
 
+  @NotBlank
   private String nome;
+  @NotNull
   private LocalDate dataDeNascimento;
+  @NotBlank
   private String cep;
 
   public ClienteWeb() {}

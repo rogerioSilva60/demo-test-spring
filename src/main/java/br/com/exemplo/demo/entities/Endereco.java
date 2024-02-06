@@ -1,7 +1,9 @@
 package br.com.exemplo.demo.entities;
 
+import jakarta.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
 public class Endereco {
 
   private String cep;
