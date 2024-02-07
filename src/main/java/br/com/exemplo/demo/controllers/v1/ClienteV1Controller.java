@@ -1,5 +1,6 @@
 package br.com.exemplo.demo.controllers.v1;
 
+import br.com.exemplo.demo.controllers.v1.openapi.ClienteV1OpenAPI;
 import br.com.exemplo.demo.dtos.ClienteWeb;
 import br.com.exemplo.demo.entities.Cliente;
 import br.com.exemplo.demo.services.CadastroClienteService;
@@ -16,7 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RequestMapping("/api/v1/clientes")
 @RestController
-public class ClienteV1Controller {
+public class ClienteV1Controller implements ClienteV1OpenAPI {
   public static final String ID = "/{id}";
   public final CadastroClienteService cadastroClienteService;
 
@@ -26,7 +27,8 @@ public class ClienteV1Controller {
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
-  ResponseEntity<Void> salvar(@Valid @RequestBody ClienteWeb clienteWeb){
+  @Override
+  public ResponseEntity<Void> salvar(@Valid @RequestBody ClienteWeb clienteWeb){
     Cliente clienteSalvo = cadastroClienteService.salvar(clienteWeb);
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path(ID)
         .buildAndExpand(clienteSalvo.getId()).toUri();

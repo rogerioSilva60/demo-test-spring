@@ -1,15 +1,22 @@
 package br.com.exemplo.demo.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Schema(name = "Cliente")
 public class ClienteWeb{
 
+  @Schema(example = "Maria")
   @NotBlank
   private String nome;
+  @Schema(type = "string", pattern = "yyyy-MM-dd", example = "1990-09-10")
+  @JsonFormat(pattern = "yyyy-MM-dd")
   @NotNull
   private LocalDate dataDeNascimento;
+  @Schema(example = "01001000")
   @NotBlank
   private String cep;
 
